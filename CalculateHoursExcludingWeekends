@@ -1,0 +1,16 @@
+Function businessHours(dtO As Date, dtC As Date) As Integer
+    Dim totalDays As Integer
+    Dim i As Integer
+    Dim numberOfBusinessDays As Integer
+    totalDays = DateDiff("d", dtO, dtC)
+    numberOfBusinessDays = 0
+   ' MsgBox (totalDays)
+    For i = 0 To totalDays
+        'MsgBox (Weekday(DateAdd("d", i, dtO)))
+        If (Weekday(DateAdd("d", i, dtO)) = 1 Or Weekday(DateAdd("d", i, dtO)) = 7) Then
+            numberOfBusinessDays = numberOfBusinessDays + 1
+            'MsgBox ("yes")
+        End If
+    Next i
+    businessHours = (DateDiff("h", dtO, dtC) - (numberOfBusinessDays * 24))
+End Function
